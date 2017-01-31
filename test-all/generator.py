@@ -33,3 +33,26 @@ print(next(g))
 
 for e in g:
     print(e)
+
+
+
+## 使用自定义规则定义生成器 将普通函数变成一个生成器  generator 函数中包含 yield关键字 则这个函数就不再是一个普通函数了 而是一个generator
+
+## 当一个普通函数是一个generator的时候，使用next调用，则遇到 yield 则返回，再次调用next的时候继续从yield处开始执行
+
+## 在普通函数中使用 yield 定一个生成器
+def test(mx):
+    r = mx
+    while(r > 0):
+        yield r
+        r -= 1
+
+
+## 获取这个生成器
+o = test(10)
+
+print(o)
+
+## 迭代这个生成器元素
+for i in test(10):
+    print(i)
